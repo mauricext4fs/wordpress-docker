@@ -1,0 +1,4 @@
+wget https://wordpress.org/latest.zip
+unzip *.zip
+rm *.zip
+

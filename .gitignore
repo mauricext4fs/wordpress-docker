@@ -1,0 +1,4 @@
+wordpress
+*.swp
+*.swo
+etc/nginx/public_html/
