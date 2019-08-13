@@ -3,7 +3,7 @@ services:
     wp-web:
         image: nginx:alpine
         links:
-          - wp
+          - wp-php-fpm
         volumes:
           - ./etc/nginx/options.include:/etc/nginx/options.include:cached
           - ./etc/nginx/wp.conf:/etc/nginx/conf.d/wp.conf:cached
@@ -18,7 +18,7 @@ services:
           - VIRTUAL_HOST=cc-cig-local.ninezh.cc
           - VIRTUAL_PORT=80
 
-    wp:
+    wp-php-fpm:
       image: mauricext4fs/docker-php7-alpine-imagic-openssl
       volumes:
         - ./wordpress:/var/www/html/wp:cached
