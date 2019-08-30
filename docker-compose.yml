@@ -14,6 +14,9 @@ services:
           #- ./plugins:/var/www/html/wp/wp-content/plugins:cached
         networks:
           www-gateway:
+        ports:
+            - 8082:80
+            - 4043:443
         environment:
           - VIRTUAL_HOST=cc-cig-local.ninezh.cc
           - VIRTUAL_PORT=80
