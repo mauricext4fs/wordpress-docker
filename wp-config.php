@@ -78,6 +78,8 @@ $table_prefix = 'wp_';
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
 define( 'WP_DEBUG', false );
+define('WP_HOME', getenv('WORDPRESS_SITE_URL'));
+define('WP_SITEURL', getenv('WORDPRESS_SITE_URL'));
 
 /* That's all, stop editing! Happy publishing. */
 
