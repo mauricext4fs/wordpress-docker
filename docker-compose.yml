@@ -11,7 +11,8 @@ services:
           - ./etc/nginx/public_html:/var/www/html:cached
           - ./wordpress:/var/www/html/wp:cached
           - ./wp-config.php:/var/www/html/wp/wp-config.php:cached
-          #- ./plugins:/var/www/html/wp/wp-content/plugins:cached
+          - ./plugins:/var/www/html/wp/wp-content/plugins:cached
+          - ./themes:/var/www/html/wp/wp-content/themes:cached
         networks:
           www-gateway:
         ports:
@@ -27,6 +28,8 @@ services:
         - ./etc/nginx/public_html:/var/www/html:cached
         - ./wordpress:/var/www/html/wp:cached
         - ./wp-config.php:/var/www/html/wp/wp-config.php:cached
+        - ./plugins:/var/www/html/wp/wp-content/plugins:cached
+        - ./themes:/var/www/html/wp/wp-content/themes:cached
       networks:
           www-gateway:
       environment:
