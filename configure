@@ -21,5 +21,7 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     cp -fR wordpress/wp-content/plugins/* plugins/
+    rm -fR wordpress/wp-content/plugins/*
     cp -fR wordpress/wp-content/themes/* themes/
+    rm -fR wordpress/wp-content/themes/*
 fi
