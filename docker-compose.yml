@@ -24,11 +24,13 @@ services:
     wp-php-fpm:
       image: mauricext4fs/docker-php7-alpine-imagic-openssl
       volumes:
+        - ./etc/nginx/public_html:/var/www/html:cached
         - ./wordpress:/var/www/html/wp:cached
         - ./wp-config.php:/var/www/html/wp/wp-config.php:cached
       networks:
           www-gateway:
       environment:
+        - WORDPRESS_SITE_URL=http://10.28.69.161:8082/wp
         - WORDPRESS_DB_HOST=other-db-master.ninezh.cc
         - WORDPRESS_DB_PORT=3306
         - WORDPRESS_DB_PROJECT_ID=wp
