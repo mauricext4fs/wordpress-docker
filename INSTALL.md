@@ -1,6 +1,4 @@
-# Usage
-
-## Setup
+# Step by step
 
 1. Create an empty MySQL database. If you wish to use an existing 
    installation of Wordpress (not recommended) then just use it's 

@@ -1,39 +1,37 @@
-# Usage
+# Start and stop wordpress
 
-## Start and stop wordpress
-
-### Start
+## Start
 
 There are two way of running the wordpress docker-compose. Either 
 inline which output directly the logs to the screen or as deamon 
 which gives no information unless using docker-compose logs.
 
-#### Inline
+### Inline
 
 ```sh
 docker-compose up
 ```
 
-#### Deamon
+### Deamon
 
 ```sh
 docker-compose up -d
 ```
 
 
-### Stop
+## Stop
 
-#### Inline
+### Inline
 
 CTRL+C 
 
-#### Deamon
+### Deamon
 
 ```sh
 docker-compose down
 ```
 
-## Themes and plugins
+# Themes and plugins
 
 You can add your plugin directly into the `plugins` directory.
 
@@ -45,7 +43,5 @@ instantly into the Wordpress Docker.
 
 After having copied the plugin, login into your wordpress instance 
 and install the plugin / theme as usual.
-
-##  
 
 

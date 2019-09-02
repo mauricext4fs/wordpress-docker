@@ -1,6 +1,8 @@
-# wordpress-docker
 
-Set of utility to setup wordpress in docker with proxy pass for separated backend api
+This project provides a set of utility to setup wordpress running 
+with php-fpm and nginx in a docker environment with proxy pass 
+for separated backend api. It is intended to be used with an external 
+MySQL database. 
 
 See USAGE.md for installation guide.
 
