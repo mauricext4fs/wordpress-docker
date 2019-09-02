@@ -20,5 +20,9 @@ it was more appropriate to let the user setup his MySQL database server separatl
 
 ## Setup
 
+See INSTALL.md
+
+## Usage
+
 See USAGE.md
 
