@@ -46,6 +46,6 @@ instantly into the Wordpress Docker.
 After having copied the plugin, login into your wordpress instance 
 and install the plugin / theme as usual.
 
-## 
+##  
 
 
