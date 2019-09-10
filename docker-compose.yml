@@ -6,7 +6,7 @@ services:
           - wp-php-fpm
         volumes:
           - ./etc/nginx/options.include:/etc/nginx/options.include:cached
-          - ./etc/nginx/wp.conf:/etc/nginx/conf.d/wp.conf:cached
+          - ./etc/nginx/wp.conf:/etc/nginx/conf.d/default.conf:cached
           - ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf:cached
           - ./etc/nginx/public_html:/var/www/html:cached
           - ./wordpress:/var/www/html/wp:cached
@@ -30,7 +30,7 @@ services:
       networks:
           www-gateway:
       environment:
-        - WORDPRESS_SITE_URL=http://10.28.69.161:8082/wp
+        - WORDPRESS_SITE_URL=http://10.28.69.162:8082/wp
         - WORDPRESS_DB_HOST=other-db-master.ninezh.cc
         - WORDPRESS_DB_USER=wp
         - WORDPRESS_DB_PASSWORD=wp
