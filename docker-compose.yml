@@ -17,6 +17,9 @@ services:
           www-gateway:
             aliases:
               - my-wordpress-site.com
+        environment:
+          - VIRTUAL_HOST=my-wordpress-site.com
+          - VIRTUAL_PORT=80
         ports:
             - 8020:80
 
