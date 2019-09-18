@@ -15,9 +15,10 @@ services:
           - ./themes:/var/www/html/wp/wp-content/themes:cached
         networks:
           www-gateway:
+            aliases:
+              - my-wordpress-site.com
         ports:
-            - 8082:80
-            - 4043:443
+            - 8020:80
 
     wp-php-fpm:
       image: mauricext4fs/docker-php7-alpine-imagic-openssl
@@ -30,8 +31,8 @@ services:
       networks:
           www-gateway:
       environment:
-        - WORDPRESS_SITE_URL=http://10.28.69.162:8082/wp
-        - WORDPRESS_DB_HOST=other-db-master.ninezh.cc
+        - WORDPRESS_SITE_URL=http://my-wordpress-site.com
+        - WORDPRESS_DB_HOST=my.mysql-server.com
         - WORDPRESS_DB_USER=wp
         - WORDPRESS_DB_PASSWORD=wp
         - WORDPRESS_DB_NAME=wordpress_template
