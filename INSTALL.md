@@ -7,12 +7,19 @@
    the environment section of wp-php-fpm. Also change the value 
    of WORDPRESS_UNIQUE_KEY (optional).
 3. Open the file "docker-compose.yml" and replace 
-   "wordpress-docker-proxy-alias.com" for 
+   "my-wordpress-site.com" for 
    the site url value of your wordpress installation. This is the 
    hostname... make sure it resolve properly to the same server 
    as this Wordpress installation). 
+
+   Also replace the value of the variable WORDPRESS_DB_NAME to your 
+   database server. Also adjust the DB login information as desired. 
+   For a new installation you must create an empty Database in Mysql 
+   manually. The wordpress installation routine (/wp-admin/) will 
+   create all necessary tables in the empty database.
+
 4. In etc/nginx/wp.conf change the value of 
-   `proxy_pass proxy_pass https://cig-staging.ninezh.cc/invest/api;`
+   `proxy_pass proxy_pass https://my-backend.com/api;`
    to your API url. Please note that you may have to activate CORS 
    on your webserver API configuration as well as in the client 
    Javascript code. Read more about CORS here: 

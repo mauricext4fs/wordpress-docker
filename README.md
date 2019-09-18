@@ -1,3 +1,4 @@
+# README
 
 This project provides a set of utility to setup wordpress running 
 with php-fpm and nginx in a docker environment with proxy pass 
