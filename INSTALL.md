@@ -6,10 +6,12 @@
 2. Open the file "docker-compose.yml" and replace all value in 
    the environment section of wp-php-fpm. Also change the value 
    of WORDPRESS_UNIQUE_KEY (optional).
-3. Open the file etc/nginx/wp.conf and replace ".ninezh.cc" for 
-   the domain name or local hostname for your Wordpress instalation
-   (the hostname of the computer running this project).
-4. Also in etc/nginx/wp.conf change the value of 
+3. Open the file "docker-compose.yml" and replace 
+   "wordpress-docker-proxy-alias.com" for 
+   the site url value of your wordpress installation. This is the 
+   hostname... make sure it resolve properly to the same server 
+   as this Wordpress installation). 
+4. In etc/nginx/wp.conf change the value of 
    `proxy_pass proxy_pass https://cig-staging.ninezh.cc/invest/api;`
    to your API url. Please note that you may have to activate CORS 
    on your webserver API configuration as well as in the client 
