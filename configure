@@ -5,6 +5,13 @@ echo "This script will install the latest version of Wordpress in "wordpress" di
 echo 
 echo 
 
+echo "Checking for existing www-gateway docker network..."
+if [[ ! "$(docker network ls | grep www-gateway)" ]]
+then
+    echo "Doesn't exist. Creating network www-gateway..." && echo "";
+    docker network create www-gateway > /dev/null
+fi
+
 if [ -d "./wordpress" ]
 then
     echo "wordpress directory already exist... aborting";
