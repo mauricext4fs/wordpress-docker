@@ -16,9 +16,9 @@ services:
         networks:
           www-gateway:
             aliases:
-              - my-wordpress-site.com
+              - courtoisconsulting.com
         environment:
-          - VIRTUAL_HOST=my-wordpress-site.com
+          - VIRTUAL_HOST=courtoisconsulting.com
           - VIRTUAL_PORT=80
         ports:
             - 8020:80
@@ -34,12 +34,12 @@ services:
       networks:
           www-gateway:
       environment:
-        - WORDPRESS_SITE_URL=http://my-wordpress-site.com
-        - WORDPRESS_DB_HOST=my.mysql-server.com
+        - WORDPRESS_SITE_URL=http://courtoisconsulting.com
+        - WORDPRESS_DB_HOST=other-db-master.ninezh.cc
         - WORDPRESS_DB_USER=wp
         - WORDPRESS_DB_PASSWORD=wp
-        - WORDPRESS_DB_NAME=wordpress_template
-        - WORDPRESS_UNIQUE_KEY=4869e5d4-bc69-11e9-9cb5-2a2ae2dbcce4
+        - WORDPRESS_DB_NAME=courtoisconsulting_com
+        - WORDPRESS_UNIQUE_KEY=4869e5d4-bc69-vlad-9cb5-2a2ae2dbcce4
 
 networks:
   www-gateway:
