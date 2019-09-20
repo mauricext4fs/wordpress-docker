@@ -1,4 +1,9 @@
 {
     "files.eol": "\n",
-    "files.autoGuessEncoding": true
+    "files.autoGuessEncoding": true,
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#1F3035",
+        "titleBar.activeBackground": "#2C444B",
+        "titleBar.activeForeground": "#F8FAFB"
+    }
 }
