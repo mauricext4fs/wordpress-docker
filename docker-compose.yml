@@ -2,6 +2,7 @@ version: '2'
 services:
     wp-web:
         image: nginx:alpine
+        restart: always
         links:
           - wp-php-fpm
         volumes:
@@ -25,6 +26,7 @@ services:
 
     wp-php-fpm:
       image: mauricext4fs/docker-php7-alpine-imagic-openssl
+      restart: always
       volumes:
         - ./etc/nginx/public_html:/var/www/html:cached
         - ./wordpress:/var/www/html/wp:cached
