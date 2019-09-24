@@ -3,16 +3,6 @@
 1. Create an empty MySQL database. If you wish to use an existing 
    installation of Wordpress (not recommended) then just use it's 
    coordinate below.
-   - after you install mysql on your local machine remeber to
-   allow connection to mysql remotely. Open your mysql config
-   file (on ubuntu: /etc/mysql/mysql.conf.d/mysqld.cnf) and edit
-   following line to be like this:<br/>
-   `bind-address  = 0.0.0.0`<br/>
-   Then restart your mysql service.
-   - after you created mysql database with user who has permission
-   to read/write to this database remember to allow remote 
-   connections for this user:<br/>
-   `UPDATE mysql.user SET host = '%' WHERE user = '<user>'`
 2. Open the file "docker-compose.yml" and replace all value in 
    the environment section of wp-php-fpm. Also change the value 
    of WORDPRESS_UNIQUE_KEY (optional) to whatever you like so that.
@@ -27,13 +17,7 @@
    wp-php-fpm service. Default port is 8020 (property 'ports' in 
    wp-web service)
 
-   Replace WORDPRESS_DB_HOST with ip which docker sees as your local 
-   machine. In order to find it open terminal and execute:
-   ```
-    ip a | grep docker0 | grep inet | sed 's/inet//' | sed 's/\/.*//'
-   ```
-
-   Also replace the value of the variable WORDPRESS_DB_NAME to your 
+   Replace WORDPRESS_DB_HOST with ip of your database. Also replace the value of the variable WORDPRESS_DB_NAME to your 
    database server. Also adjust the DB login information as desired. 
    For a new installation you must create an empty Database in Mysql 
    manually. The wordpress installation routine (/wp-admin/) will 
@@ -64,6 +48,7 @@
 
 ## Troubleshooting
 
+### Theme does not exist
 After wordpress installation you can see error saying that twentynineteen theme
 is not existing (as it is default theme). To solve this you need to download this 
 theme and put it inside themes/ directory:
@@ -74,3 +59,21 @@ unzip twentynineteen.1.4.zip && rm -f twentynineteen.1.4.zip
 At the time you are running this there could be newer version of this theme.
 To download newest version go to https://wordpress.org/themes/twentynineteen/
 and click "Download"
+
+### IP of local MySQL database
+Although it is strongly not recommended to use local database (you should use remote one) here is a solution for finding right ip of this database so docker container can reach it:
+- after you install mysql on your local machine remeber to
+allow connection to mysql remotely. Open your mysql config
+file (on ubuntu: /etc/mysql/mysql.conf.d/mysqld.cnf) and edit
+following line to be like this:<br/>
+`bind-address  = 0.0.0.0`<br/>
+Then restart your mysql service.
+- after you created mysql database with user who has permission
+to read/write to this database remember to allow remote 
+connections for this user:<br/>
+`UPDATE mysql.user SET host = '%' WHERE user = '<user>'`
+- Replace WORDPRESS_DB_HOST with ip which docker sees as your local 
+machine. In order to find it open terminal and execute:
+  ```
+  ip a | grep docker0 | grep inet | sed 's/inet//' | sed 's/\/.*//'
+  ```
