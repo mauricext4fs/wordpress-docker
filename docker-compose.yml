@@ -9,11 +9,11 @@ services:
           - ./etc/nginx/options.include:/etc/nginx/options.include:cached
           - ./etc/nginx/wp.conf:/etc/nginx/conf.d/default.conf:cached
           - ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf:cached
-          - ./etc/nginx/public_html:/var/www/html:cached
-          - ./wordpress:/var/www/html/wp:cached
+          - ./wordpress:/var/www/html:cached
           - ./wp-config.php:/var/www/html/wp/wp-config.php:cached
           - ./plugins:/var/www/html/wp/wp-content/plugins:cached
           - ./themes:/var/www/html/wp/wp-content/themes:cached
+          - ./uploads:/var/www/html/wp/wp-content/uploads
         networks:
           www-gateway:
             aliases:
@@ -28,11 +28,11 @@ services:
       image: mauricext4fs/docker-php7-alpine-imagic-openssl
       restart: always
       volumes:
-        - ./etc/nginx/public_html:/var/www/html:cached
-        - ./wordpress:/var/www/html/wp:cached
+        - ./wordpress:/var/www/html:cached
         - ./wp-config.php:/var/www/html/wp/wp-config.php:cached
         - ./plugins:/var/www/html/wp/wp-content/plugins:cached
         - ./themes:/var/www/html/wp/wp-content/themes:cached
+        - ./uploads:/var/www/html/wp/wp-content/uploads
       networks:
           www-gateway:
       environment:
