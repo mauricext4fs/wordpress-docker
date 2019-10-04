@@ -10,10 +10,10 @@ services:
           - ./etc/nginx/wp.conf:/etc/nginx/conf.d/default.conf:cached
           - ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf:cached
           - ./wordpress:/var/www/html:cached
-          - ./wp-config.php:/var/www/html/wp/wp-config.php:cached
-          - ./plugins:/var/www/html/wp/wp-content/plugins:cached
-          - ./themes:/var/www/html/wp/wp-content/themes:cached
-          - ./uploads:/var/www/html/wp/wp-content/uploads
+          - ./wp-config.php:/var/www/html/wp-config.php:cached
+          - ./plugins:/var/www/html/wp-content/plugins:cached
+          - ./themes:/var/www/html/wp-content/themes:cached
+          - ./uploads:/var/www/html/wp-content/uploads
         networks:
           www-gateway:
             aliases:
@@ -29,10 +29,10 @@ services:
       restart: always
       volumes:
         - ./wordpress:/var/www/html:cached
-        - ./wp-config.php:/var/www/html/wp/wp-config.php:cached
-        - ./plugins:/var/www/html/wp/wp-content/plugins:cached
-        - ./themes:/var/www/html/wp/wp-content/themes:cached
-        - ./uploads:/var/www/html/wp/wp-content/uploads
+        - ./wp-config.php:/var/www/html/wp-config.php:cached
+        - ./plugins:/var/www/html/wp-content/plugins:cached
+        - ./themes:/var/www/html/wp-content/themes:cached
+        - ./uploads:/var/www/html/wp-content/uploads
       networks:
           www-gateway:
       environment:
