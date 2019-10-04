@@ -36,7 +36,7 @@ services:
       networks:
           www-gateway:
       environment:
-        - WORDPRESS_SITE_URL=http://my-wordpress-site.com/wp
+        - WORDPRESS_SITE_URL=http://my-wordpress-site.com/
         - WORDPRESS_DB_HOST=my.mysql-server.com
         - WORDPRESS_DB_USER=wp
         - WORDPRESS_DB_PASSWORD=wp
