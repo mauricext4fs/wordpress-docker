@@ -38,22 +38,25 @@ https://github.com/mauricext4fs/docker-proxy.git
    This is optional... if you do not need to use a remote backend 
    then leave this section commented.
 
-5. Run the configure script "./configure" which will do the following: 
+5. Go to .env file and replace "some_project_name" value of variable COMPOSE_PROJECT_NAME 
+   with name of your wordpress project.
+
+6. Run the configure script "./configure" which will do the following: 
     - Pull the latest version of Wordpress in wordpress directory
     - Take out the freshly installed wp-content/plugins and move it to ./plugins 
       (if not exist yet)
     - Take out the freshly installed wp-content/themes and move it to ./themes
       (if not exist yet)
-6. Open your /etc/hosts file and add following line:<br/>
+7. Open your /etc/hosts file and add following line:<br/>
 ```sh
 X.X.X.X     <your-wordpress-url>
 ```
    Where X.X.X.X is the IP Address of your external adapter. NOT 127.0.0.1.
    Where <your-wordpress-url> is the url of you wordpress installation.
 
-7. Open a terminal in the current directory and run: docker-compose up
+8. Open a terminal in the current directory and run: docker-compose up
 
-8. Navigate to your Wordpress URL with your favorite Internet Browser
+9. Navigate to your Wordpress URL with your favorite Internet Browser
 (remember to use `:<port>/wp-admin/` path)
 
 ## Troubleshooting
