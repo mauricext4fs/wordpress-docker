@@ -17,12 +17,12 @@ services:
         networks:
           www-gateway:
             aliases:
-              - my-wordpress-site.com
+              - ${WORDPRESS_URL}
         environment:
-          - VIRTUAL_HOST=my-wordpress-site.com
+          - VIRTUAL_HOST=${WORDPRESS_URL}
           - VIRTUAL_PORT=80
         ports:
-            - 8020:80
+            - ${WORDPRESS_PORT}:80
 
     wp-php-fpm:
       image: mauricext4fs/docker-php7-alpine-imagic-openssl
@@ -36,12 +36,12 @@ services:
       networks:
           www-gateway:
       environment:
-        - WORDPRESS_SITE_URL=http://my-wordpress-site.com/
-        - WORDPRESS_DB_HOST=my.mysql-server.com
-        - WORDPRESS_DB_USER=wp
-        - WORDPRESS_DB_PASSWORD=wp
-        - WORDPRESS_DB_NAME=my-wordpress-site.com
-        - WORDPRESS_UNIQUE_KEY=4869e5d4-bc69-vlad-9cb5-2a2ae2dbcce4
+        - WORDPRESS_SITE_URL=http://${WORDPRESS_URL}/
+        - WORDPRESS_DB_HOST=${DB_HOST}
+        - WORDPRESS_DB_USER=${DB_USER}
+        - WORDPRESS_DB_PASSWORD=${DB_PASSWORD}
+        - WORDPRESS_DB_NAME=${DB_NAME}
+        - WORDPRESS_UNIQUE_KEY=${UNIQUE_KEY}
 
 networks:
   www-gateway:

@@ -8,52 +8,31 @@ https://github.com/mauricext4fs/docker-proxy.git
 1. Create an empty MySQL database. If you wish to use an existing 
    installation of Wordpress (not recommended) then just use it's 
    coordinate below.
-2. Open the file "docker-compose.yml" and replace all value in 
-   the environment section of wp-php-fpm. Also change the value 
-   of VIRTUAL_HOST and aliases. Also change the value 
-   of WORDPRESS_UNIQUE_KEY (optional) to whatever you like so that.
-   As far as I understand it... WordrPress uses this variable for
-   salting password saved in the Database.
-3. Open the file "docker-compose.yml" and replace 
-   "my-wordpress-site.com" for 
-   the site url value of your wordpress installation. This is the 
-   hostname... make sure it resolve properly to the same server 
-   as this Wordpress installation). Do not use 127.0.0.1. As 
-   docker have their own network, working similarly to a Virtual 
-   machine, 127.0.0.1 will not resolve to the same host (your 
-   PC) inside the docker machine. You must use the IP of you 
-   WLAN or Ethernet Adapter or Virtual Adapter.
 
-   Replace WORDPRESS_DB_HOST with ip of your database. Also 
-   replace the value of the variable WORDPRESS_DB_NAME to your 
-   database server. Also adjust the DB login information as desired. 
-   For a new installation you must create an empty Database in Mysql 
-   manually. The wordpress installation routine (/wp-admin/) will 
-   create all necessary tables in the empty database.
-
-4. In etc/nginx/wp.conf uncomment the section location /rapi 
+2. In etc/nginx/wp.conf uncomment the section location /rapi 
    and change the value of `proxy_pass http://vlad.com;`
    to your remote backend API.
 
    This is optional... if you do not need to use a remote backend 
    then leave this section commented.
 
-5. Run the configure script "./configure" which will do the following: 
+3. Run the configure script "./configure" which will do the following: 
     - Pull the latest version of Wordpress in wordpress directory
     - Take out the freshly installed wp-content/plugins and move it to ./plugins 
       (if not exist yet)
     - Take out the freshly installed wp-content/themes and move it to ./themes
       (if not exist yet)
-6. Open your /etc/hosts file and add following line:<br/>
-```sh
-X.X.X.X     <your-wordpress-url>
-```
+    - Create project configuration (.env file) based on your answers. If this file already exists you will have option to delete it and create again.
+4. Open your /etc/hosts file and add following line:<br/>
+    ```sh
+    X.X.X.X     <your-wordpress-url>
+    ```
    Where X.X.X.X is the IP Address of your external adapter. NOT 127.0.0.1.
    Where <your-wordpress-url> is the url of you wordpress installation.
 
-7. Open a terminal in the current directory and run: docker-compose up
+5. Open a terminal in the current directory and run: docker-compose up
 
-8. Navigate to your Wordpress URL with your favorite Internet Browser
+6. Navigate to your Wordpress URL with your favorite Internet Browser
 (remember to use `:<port>/wp-admin/` path)
 
 ## Troubleshooting
@@ -82,8 +61,23 @@ Then restart your mysql service.
 to read/write to this database remember to allow remote 
 connections for this user:<br/>
 `UPDATE mysql.user SET host = '%' WHERE user = '<user>'`
-- Replace WORDPRESS_DB_HOST with ip which docker sees as your local 
-machine. In order to find it open terminal and execute:
+- Enter DB_HOST during configure with ip which docker sees as your local machine. In order to find it open terminal and execute:
   ```
   ip a | grep docker0 | grep inet | sed 's/inet//' | sed 's/\/.*//'
   ```
+
+### Advices during project configuration
+- WORDPRESS_URL is the 
+hostname... make sure it resolve properly to the same server 
+as this Wordpress installation). Do not use 127.0.0.1. As 
+docker have their own network, working similarly to a Virtual 
+machine, 127.0.0.1 will not resolve to the same host (your 
+PC) inside the docker machine. You must use the IP of you 
+WLAN or Ethernet Adapter or Virtual Adapter.
+
+- As far as I understand it... WordrPress uses UNIQUE_KEY for
+salting password saved in the Database.
+
+- For a new installation you must create an empty Database in Mysql 
+manually. The wordpress installation routine (/wp-admin/) will 
+create all necessary tables in the empty database.

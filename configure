@@ -1,5 +1,74 @@
 #!/bin/bash
 
+function create_project_config {
+    touch .env
+    echo "Please set following config (press Enter to accept default value):" && echo ""
+
+    read -p "Enter your wordpress project name: (my_amazing_project) "
+    if [[ $REPLY == '' ]]
+    then
+        echo 'COMPOSE_PROJECT_NAME=my_amazing_project' >> .env
+    else
+        echo 'COMPOSE_PROJECT_NAME='$REPLY >> .env
+    fi
+
+    read -p "Enter your wordpress site URL: (my-wordpress-site.com) "
+    if [[ $REPLY == '' ]]
+    then
+        echo 'WORDPRESS_URL=my-wordpress-site.com' >> .env
+    else
+        echo 'WORDPRESS_URL='$REPLY >> .env
+    fi
+
+    read -p "Enter your wordpress port: (8020) "
+    if [[ $REPLY == '' ]]
+    then
+        echo 'WORDPRESS_PORT=8020' >> .env
+    else
+        echo 'WORDPRESS_PORT='$REPLY >> .env
+    fi
+
+    read -p "Enter your database host: (my.mysql-server.com) "
+    if [[ $REPLY == '' ]]
+    then
+        echo 'DB_HOST=my.mysql-server.com' >> .env
+    else
+        echo 'DB_HOST='$REPLY >> .env
+    fi
+
+    read -p "Enter your database user: (wp) "
+    if [[ $REPLY == '' ]]
+    then
+        echo 'DB_USER=wp' >> .env
+    else
+        echo 'DB_USER='$REPLY >> .env
+    fi
+
+    read -p "Enter your database password: (wp) "
+    if [[ $REPLY == '' ]]
+    then
+        echo 'DB_PASSWORD=wp' >> .env
+    else
+        echo 'DB_PASSWORD='$REPLY >> .env
+    fi
+
+    read -p "Enter your database name: (mydatabase) "
+    if [[ $REPLY == '' ]]
+    then
+        echo 'DB_NAME=mydatabase' >> .env
+    else
+        echo 'DB_NAME='$REPLY >> .env
+    fi
+
+    read -p "Enter wordpress unique key: (4869e5d4-bc69-vlad-9cb5-2a2ae2dbcce4) "
+    if [[ $REPLY == '' ]]
+    then
+        echo 'UNIQUE_KEY=4869e5d4-bc69-vlad-9cb5-2a2ae2dbcce4' >> .env
+    else
+        echo 'UNIQUE_KEY='$REPLY >> .env
+    fi
+}
+
 echo 
 echo "This script will install the latest version of Wordpress in "wordpress" directory";
 echo 
@@ -33,3 +102,16 @@ then
     rm -fR wordpress/wp-content/themes/*
 fi
 chmod ugo+rwx uploads
+
+if [ -f ".env" ]
+then
+    read -p ".env file already exists. Do you want to remove it and create project config again? (y/n)" -n 1 -r
+    echo 
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+        rm -f .env
+        create_project_config
+    fi
+else
+    create_project_config
+fi
