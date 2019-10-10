@@ -20,9 +20,7 @@ services:
               - ${WORDPRESS_URL}
         environment:
           - VIRTUAL_HOST=${WORDPRESS_URL}
-          - VIRTUAL_PORT=80
-        ports:
-            - ${WORDPRESS_PORT}:80
+          - VIRTUAL_PORT=443
 
     wp-php-fpm:
       image: mauricext4fs/docker-php7-alpine-imagic-openssl
