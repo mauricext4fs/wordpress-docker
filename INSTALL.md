@@ -27,9 +27,10 @@ before continuing with this Guide.
       (if not exist yet)
     - Create project configuration (.env file) based on your answers. If this file already exists you will have option to delete it and create again.
 4. Open your /etc/hosts file and add following line:<br/>
-    ```sh
+```sh
     X.X.X.X     <your-wordpress-url>
-    ```
+```
+
    Where X.X.X.X is the IP Address of your external adapter. NOT 127.0.0.1.
    Where <your-wordpress-url> is the url of you wordpress installation.
 
