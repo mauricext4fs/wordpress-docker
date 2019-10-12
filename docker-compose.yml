@@ -20,7 +20,7 @@ services:
               - ${WORDPRESS_URL}
         environment:
           - VIRTUAL_HOST=${WORDPRESS_URL}
-          - VIRTUAL_PORT=443
+          - VIRTUAL_PORT=443,80
 
     wp-php-fpm:
       image: mauricext4fs/docker-php7-alpine-imagic-openssl
@@ -34,7 +34,7 @@ services:
       networks:
           www-gateway:
       environment:
-        - WORDPRESS_SITE_URL=http://${WORDPRESS_URL}/
+        - WORDPRESS_SITE_URL=https://${WORDPRESS_URL}/
         - WORDPRESS_DB_HOST=${DB_HOST}
         - WORDPRESS_DB_USER=${DB_USER}
         - WORDPRESS_DB_PASSWORD=${DB_PASSWORD}
