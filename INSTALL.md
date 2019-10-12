@@ -2,8 +2,11 @@
 
 You must install docker-proxy first before beginning to install 
 wordpress-docker. We provided a version already fully configured 
-with SSL and the domain ninezh.cc: 
+with SSL and the domain ninezh.cc at : 
 https://github.com/mauricext4fs/docker-proxy.git
+
+Please clone the above git repo and follow the setup instruction 
+before continuing with this Guide.
 
 1. Create an empty MySQL database. If you wish to use an existing 
    installation of Wordpress (not recommended) then just use it's 
