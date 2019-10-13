@@ -1,7 +1,7 @@
 version: '2' 
 services:
     wp-web:
-        image: nginx:alpine
+        image: mauricext4fs/docker-alpine-nginx-ssl-ninezh.cc
         restart: always
         links:
           - wp-php-fpm
@@ -22,7 +22,6 @@ services:
               - ${WORDPRESS_URL}
         environment:
           - VIRTUAL_HOST=${WORDPRESS_URL}
-          - VIRTUAL_PORT=443
 
     wp-php-fpm:
       image: mauricext4fs/docker-php7-alpine-imagic-openssl
