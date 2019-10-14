@@ -15,9 +15,10 @@ services:
         networks:
           www-gateway:
             aliases:
-              - ${WORDPRESS_URL}
+              - ${WORDPRESS_SITE_URL}
         environment:
-          - VIRTUAL_HOST=${WORDPRESS_URL}
+          - VIRTUAL_HOST=${WORDPRESS_SITE_URL}
+          - COMPOSE_PROJECT_NAME
 
     wp-php-fpm:
       image: mauricext4fs/docker-php7-alpine-imagic-openssl
@@ -31,12 +32,13 @@ services:
       networks:
           www-gateway:
       environment:
-        - WORDPRESS_SITE_URL=https://${WORDPRESS_URL}/
-        - WORDPRESS_DB_HOST=${DB_HOST}
-        - WORDPRESS_DB_USER=${DB_USER}
-        - WORDPRESS_DB_PASSWORD=${DB_PASSWORD}
-        - WORDPRESS_DB_NAME=${DB_NAME}
-        - WORDPRESS_UNIQUE_KEY=${UNIQUE_KEY}
+        - WORDPRESS_SITE_URL=https://${WORDPRESS_SITE_URL}/
+        - WORDPRESS_DB_HOST
+        - WORDPRESS_DB_USER
+        - WORDPRESS_DB_PASSWORD
+        - WORDPRESS_DB_NAME
+        - WORDPRESS_UNIQUE_KEY
+        - COMPOSE_PROJECT_NAME
 
 networks:
   www-gateway:
