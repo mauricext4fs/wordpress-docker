@@ -11,7 +11,7 @@ function create_project_config {
         echo 'WORDPRESS_URL=my-amazing-project.com'
     else
         echo 'COMPOSE_PROJECT_NAME='$REPLY >> .env
-        echo 'WORDPRESS_URL='$REPLY | tr -s ' ' '-' | tr '[:upper:]' '[:lower:]' | '.com' >> .env
+        echo 'WORDPRESS_URL='$REPLY >> .env
     fi
 
     read -p "Enter your database host: (my.mysql-server.com) "
@@ -53,7 +53,13 @@ function create_project_config {
     else
         echo 'UNIQUE_KEY='$REPLY >> .env
     fi
+
+    echo 'WP_CONTENT_DIR=$PWD/wordpress/wp-content' >> .env
 }
+
+mkdir $PWD/wp-content/uploads &> /dev/null
+sudo chown $USER:$USER -fR $PWD/wordpress/wp-content/
+sudo chown $USER:$USER -fR $PWD/wordpress/wp-config.php
 
 echo 
 echo "This script will install the latest version of Wordpress in "wordpress" directory";
