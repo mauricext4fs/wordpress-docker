@@ -11,7 +11,7 @@ services:
           - ./wp-config.php:/var/www/html/wp-config.php:cached
           - ./plugins:/var/www/html/wp-content/plugins:cached
           - ./themes:/var/www/html/wp-content/themes:cached
-          - ./uploads:/var/www/html/wp-content/uploads
+          - ./uploads:/var/www/html/wp-content/uploads:cached
         networks:
           www-gateway:
             aliases:
@@ -28,7 +28,7 @@ services:
         - ./wp-config.php:/var/www/html/wp-config.php:cached
         - ./plugins:/var/www/html/wp-content/plugins:cached
         - ./themes:/var/www/html/wp-content/themes:cached
-        - ./uploads:/var/www/html/wp-content/uploads
+        - ./uploads:/var/www/html/wp-content/uploads:cached
       networks:
           www-gateway:
       environment:
@@ -38,6 +38,7 @@ services:
         - WORDPRESS_DB_PASSWORD
         - WORDPRESS_DB_NAME
         - WORDPRESS_UNIQUE_KEY
+        - WP_CONTENT_DIR
         - COMPOSE_PROJECT_NAME
 
 networks:
