@@ -33,11 +33,11 @@ services:
           www-gateway:
       environment:
         - WORDPRESS_SITE_URL=https://${WORDPRESS_SITE_URL}/
-        - WORDPRESS_DB_HOST
-        - WORDPRESS_DB_USER
-        - WORDPRESS_DB_PASSWORD
-        - WORDPRESS_DB_NAME
-        - WORDPRESS_UNIQUE_KEY
+        - DB_HOST
+        - DB_USER
+        - DB_PASSWORD
+        - DB_NAME
+        - UNIQUE_KEY
         - WP_CONTENT_DIR
         - COMPOSE_PROJECT_NAME
 
