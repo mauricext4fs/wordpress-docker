@@ -57,14 +57,23 @@ function create_project_config {
     echo 'WP_CONTENT_DIR=$PWD/wordpress/wp-content' >> .env
 }
 
-mkdir $PWD/wp-content/uploads &> /dev/null
-sudo chown $USER:$USER -fR $PWD/wordpress/wp-content/
-sudo chown $USER:$USER -fR $PWD/wordpress/wp-config.php
-
 echo 
 echo "This script will install the latest version of Wordpress in "wordpress" directory";
 echo 
 echo 
+
+if [ -f ".env" ]
+then
+    read -p ".env file already exists. Do you want to remove it and create project config again? (y/n)" -n 1 -r
+    echo 
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+        rm -f .env
+        create_project_config
+    fi
+else
+    create_project_config
+fi
 
 echo "Checking for existing www-gateway docker network..."
 if [[ ! "$(docker network ls | grep www-gateway)" ]]
@@ -94,15 +103,10 @@ else
     chmod ugo+rwx uploads
 fi
 
-if [ -f ".env" ]
-then
-    read -p ".env file already exists. Do you want to remove it and create project config again? (y/n)" -n 1 -r
-    echo 
-    if [[ $REPLY =~ ^[Yy]$ ]]
-    then
-        rm -f .env
-        create_project_config
-    fi
-else
-    create_project_config
-fi
+mkdir $PWD/wordpress/wp-content/uploads &> /dev/null
+sudo chown $USER:$USER -fR $PWD/wordpress/wp-content/
+sudo chown $USER:$USER -fR $PWD/wordpress/wp-config.php
+cp wp-config.php $PWD/wordpress/
+
+
+
