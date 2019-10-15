@@ -106,6 +106,7 @@ fi
 mkdir $PWD/wordpress/wp-content/uploads &> /dev/null
 sudo chown $USER:$USER -fR $PWD/wordpress/wp-content/
 sudo chown $USER:$USER -fR $PWD/wordpress/wp-config.php
+chmod o+rwx $PWD/wordpress/wp-content/uploads
 cp wp-config.php $PWD/wordpress/
 
 
