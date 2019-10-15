@@ -8,10 +8,10 @@ function create_project_config {
     if [[ $REPLY == '' ]]
     then
         echo 'COMPOSE_PROJECT_NAME=my_amazing_project' >> .env
-        echo 'WORDPRESS_URL=my-amazing-project.com'
+        echo 'WORDPRESS_SITE_URL=my-amazing-project.com'
     else
         echo 'COMPOSE_PROJECT_NAME='$REPLY >> .env
-        echo 'WORDPRESS_URL='$REPLY >> .env
+        echo 'WORDPRESS_SITE_URL='$REPLY >> .env
     fi
 
     read -p "Enter your database host: (my.mysql-server.com) "
