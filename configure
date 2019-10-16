@@ -103,5 +103,11 @@ sudo chown $USER:$USER -fR $PWD/wordpress/wp-config.php
 chmod o+rwx $PWD/wordpress/wp-content/uploads
 cp wp-config.php $PWD/wordpress/
 
-
+# Only generating .ssmtp.conf if it isn't there...
+# mail config usually does not change between
+# installation
+if [ ! -f ".ssmtp.conf" ]
+then
+    ./gen_ssmtp.conf.sh
+fi
 
