@@ -78,8 +78,10 @@ fi
 echo "Checking for existing www-gateway docker network..."
 if [[ ! "$(docker network ls | grep www-gateway)" ]]
 then
-    echo "Doesn't exist. Creating network www-gateway..." && echo "";
-    docker network create www-gateway > /dev/null
+    echo "Doesn't exist. Downloading and installing docker-proxy..." && echo "";
+    git clone https://github.com/mauricext4fs/docker-proxy.git
+    cd docker-proxy && make up
+    cd ..
 fi
 
 if [ -d "./wordpress" ]
