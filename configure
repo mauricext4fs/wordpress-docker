@@ -100,7 +100,6 @@ else
         cp -fR wordpress/wp-content/themes/* themes/
         rm -fR wordpress/wp-content/themes/*
     fi
-    chmod ugo+rwx uploads
 fi
 
 mkdir $PWD/wordpress/wp-content/uploads &> /dev/null
