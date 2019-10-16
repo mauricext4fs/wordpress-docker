@@ -10,7 +10,7 @@ services:
           - ./wordpress:/var/www/html:cached
           - ./plugins:/var/www/html/wp-content/plugins:cached
           - ./themes:/var/www/html/wp-content/themes:cached
-          - ./ssmtp.conf:/etc/ssmtp/ssmtp.conf:cached
+          - ./.ssmtp.conf:/etc/ssmtp/ssmtp.conf:cached
         networks:
           www-gateway:
             aliases:
@@ -26,7 +26,7 @@ services:
         - ./wordpress:/var/www/html:cached
         - ./plugins:/var/www/html/wp-content/plugins:cached
         - ./themes:/var/www/html/wp-content/themes:cached
-        - ./ssmtp.conf:/etc/ssmtp/ssmtp.conf:cached
+        - ./.ssmtp.conf:/etc/ssmtp/ssmtp.conf:cached
       networks:
           www-gateway:
       environment:
