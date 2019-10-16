@@ -46,14 +46,7 @@ function create_project_config {
         echo 'DB_NAME='$REPLY >> .env
     fi
 
-    read -p "Enter wordpress unique key: (4869e5d4-bc69-vlad-9cb5-2a2ae2dbcce4) "
-    if [[ $REPLY == '' ]]
-    then
-        echo 'UNIQUE_KEY=4869e5d4-bc69-vlad-9cb5-2a2ae2dbcce4' >> .env
-    else
-        echo 'UNIQUE_KEY='$REPLY >> .env
-    fi
-
+    echo 'UNIQUE_KEY='`uuid` >> .env
     echo 'WP_CONTENT_DIR=$PWD/wordpress/wp-content' >> .env
 }
 
