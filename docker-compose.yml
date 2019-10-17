@@ -38,6 +38,9 @@ services:
         - UNIQUE_KEY
         - WP_CONTENT_DIR
         - COMPOSE_PROJECT_NAME
+        - FTP_BASE
+        - FTP_PLUGIN_DIR
+        - FTP_CONTENT_DIR
 
 networks:
   www-gateway:
