@@ -4,7 +4,7 @@ function create_project_config {
     touch .env
     echo "Please set following config (press Enter to accept default value):" && echo ""
 
-    read -p "Enter your wordpress project name: (my_amazing_project) "
+    read -p "Enter your wordpress full domain name (FQDN): (ex fintech-hosting.ch) "
     if [[ $REPLY == '' ]]
     then
         echo 'COMPOSE_PROJECT_NAME=my_amazing_project' >> .env
@@ -98,8 +98,6 @@ else
 fi
 
 mkdir $PWD/wordpress/wp-content/uploads &> /dev/null
-sudo chown $USER:$USER -fR $PWD/wordpress/wp-content/
-sudo chown $USER:$USER -fR $PWD/wordpress/wp-config.php
 chmod o+rwx $PWD/wordpress/wp-content/uploads
 cp wp-config.php $PWD/wordpress/
 
