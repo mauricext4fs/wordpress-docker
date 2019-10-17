@@ -80,6 +80,10 @@ $table_prefix = 'wp_';
 define( 'WP_DEBUG', false );
 define('WP_HOME', getenv('WORDPRESS_SITE_URL'));
 define('WP_SITEURL', getenv('WORDPRESS_SITE_URL'));
+define( 'WP_CONTENT_DIR', getenv('WP_CONTENT_DIR') );
+define( 'FTP_BASE', getenv('FTP_BASE') );
+define( 'FTP_PLUGIN_DIR', getenv('FTP_PLUGIN_DIR') );
+define( 'FTP_CONTENT_DIR', getenv('FTP_CONTENT_DIR') );
 
 /* That's all, stop editing! Happy publishing. */
 

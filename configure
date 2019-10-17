@@ -47,7 +47,10 @@ function create_project_config {
     fi
 
     echo 'UNIQUE_KEY='`uuid` >> .env
-    echo 'WP_CONTENT_DIR=$PWD/wordpress/wp-content' >> .env
+    echo 'WP_CONTENT_DIR=/var/www/html/wp-content' >> .env
+    echo 'FTP_BASE=/var/www/html' >> .env
+    echo 'FTP_PLUGIN_DIR=/var/www/html/wp-content/plugins' >> .env
+    echo 'FTP_CONTENT_DIR=/var/www/html/wp-content' >> .env
 }
 
 echo 
@@ -100,6 +103,7 @@ fi
 mkdir $PWD/wordpress/wp-content/uploads &> /dev/null
 chmod o+rwx $PWD/wordpress/wp-content/uploads
 cp wp-config.php $PWD/wordpress/
+docker run -it cig-exchangech_wp-php-fpm_1 sh -c 'chown www-data:www-data /var/www/html -R'
 
 # Only generating .ssmtp.conf if it isn't there...
 # mail config usually does not change between
