@@ -103,7 +103,7 @@ fi
 mkdir $PWD/wordpress/wp-content/uploads &> /dev/null
 chmod o+rwx $PWD/wordpress/wp-content/uploads
 cp wp-config.php $PWD/wordpress/
-docker-compose exec wp-php-fpm sh -c 'chown www-data:www-data /var/www/html -R'
+docker-compose run wp-php-fpm sh -c 'chown www-data:www-data /var/www/html -R'
 
 # Only generating .ssmtp.conf if it isn't there...
 # mail config usually does not change between
